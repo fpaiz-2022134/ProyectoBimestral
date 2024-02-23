@@ -1,0 +1,614 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "GestorComercial",
+    "dateExported": "2024-02-23T23:22:28.156Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "user/admin",
+            "containerId": "",
+            "created": "2024-02-23T19:05:04.041Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "c623bdb0-dc73-4d24-b828-a6752aa5889c",
+            "name": "user/client",
+            "containerId": "",
+            "created": "2024-02-23T19:05:04.042Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3548a52d-b61d-4c20-923a-4975c6c91c3e",
+            "name": "products",
+            "containerId": "",
+            "created": "2024-02-23T19:05:04.043Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "6eca7f06-45cb-4511-8091-1ddf035f2fce",
+            "name": "category",
+            "containerId": "",
+            "created": "2024-02-23T19:05:04.044Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "fb285838-f534-42f6-87da-8467b894fa75",
+            "name": "admin",
+            "containerId": "6eca7f06-45cb-4511-8091-1ddf035f2fce",
+            "created": "2024-02-23T19:05:04.045Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "86bf52cd-65d7-4722-8559-f9a96dc92e97",
+            "name": "client",
+            "containerId": "6eca7f06-45cb-4511-8091-1ddf035f2fce",
+            "created": "2024-02-23T19:05:04.046Z",
+            "sortNum": 70000
+        },
+        {
+            "_id": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "admin",
+            "containerId": "3548a52d-b61d-4c20-923a-4975c6c91c3e",
+            "created": "2024-02-23T19:05:04.047Z",
+            "sortNum": 80000
+        },
+        {
+            "_id": "17a80983-d8aa-42af-bf86-cdd47a153ee9",
+            "name": "client",
+            "containerId": "3548a52d-b61d-4c20-923a-4975c6c91c3e",
+            "created": "2024-02-23T19:05:04.048Z",
+            "sortNum": 90000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "b4e69588-64e3-42c8-be7f-5bf329b102f7",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "c623bdb0-dc73-4d24-b828-a6752aa5889c",
+            "name": "register",
+            "url": "/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-23T19:05:04.042Z",
+            "modified": "2024-02-23T19:05:04.042Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Daniela"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Osorio"
+                    },
+                    {
+                        "name": "username",
+                        "value": "danielaosorio2"
+                    },
+                    {
+                        "name": "email",
+                        "value": "danosorio@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "4af80d01-2a35-4c47-9dba-c0346c7ab3cc",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "17a80983-d8aa-42af-bf86-cdd47a153ee9",
+            "name": "getProductByName Copy",
+            "url": "/product/getProductByName",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-23T19:05:04.054Z",
+            "modified": "2024-02-23T20:45:54.114Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDNjNzQ2ZTQwNjRiZmQ0ZDYyN2MiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyIsInJvbGUiOiJDTElFTlQiLCJpYXQiOjE3MDg3MjExMDEsImV4cCI6MTcwODczMTkwMX0.3iDdjvhGBQsC-6fADdIjMOUIPTmn_vWzWsgF474qDoM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Black T-shirt"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f575f58d-e413-4600-880d-c536879fc91f",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "c623bdb0-dc73-4d24-b828-a6752aa5889c",
+            "name": "login",
+            "url": "/user/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T19:05:04.043Z",
+            "modified": "2024-02-23T19:05:04.043Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "danielaosorio2"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "dbb54e6a-0b0f-4afb-870a-52944f5b3cd1",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "17a80983-d8aa-42af-bf86-cdd47a153ee9",
+            "name": "getProducts Copy",
+            "url": "/product/getProducts",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-23T19:05:04.055Z",
+            "modified": "2024-02-23T19:05:04.055Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ3NjBiN2M3NzNmYmUwNzI4YTQ5ODAiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcwODY1NDI0OCwiZXhwIjoxNzA4NjY1MDQ4fQ.g_Z_d47AonWaywocdLlBah6iJU1uOGKsmEPZPirpPSY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ebfc9afb-04f2-4e64-8f4a-bed7c2a3fd39",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "login",
+            "url": "/user/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-23T19:05:04.044Z",
+            "modified": "2024-02-23T23:04:12.550Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "fpaiz"
+                    },
+                    {
+                        "name": "password",
+                        "value": "87654321"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "10ea3057-50ac-4e2e-9991-a9ce3ad29f72",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "register",
+            "url": "/user/register",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-23T19:05:04.045Z",
+            "modified": "2024-02-23T23:01:09.901Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Franco"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Paiz"
+                    },
+                    {
+                        "name": "username",
+                        "value": "fpaiz2"
+                    },
+                    {
+                        "name": "email",
+                        "value": "fpaiz@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "87654321"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "87654321"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "9268e0ed-0cc9-4c92-8699-3e3f68538340",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "update",
+            "url": "/user/updateUser/65d923b5ae01a115c5efa065",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-02-23T19:05:04.046Z",
+            "modified": "2024-02-23T23:06:44.827Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjM3OGFlMDFhMTE1YzVlZmEwNjMiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3Mjk0NTIsImV4cCI6MTcwODc0MDI1Mn0.gLv8Cnn5NRxaBN-3cIjriIQP3pGy7jJtVYxpJVJ6J9M"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "fralpaiz2@gmail.com"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "2c458cf8-619b-455f-97b9-025b7092a2bd",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "delete",
+            "url": "/user/deleteUser/65d92378ae01a115c5efa063",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-23T19:05:04.047Z",
+            "modified": "2024-02-23T23:12:15.778Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjM3OGFlMDFhMTE1YzVlZmEwNjMiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3Mjk0NTIsImV4cCI6MTcwODc0MDI1Mn0.gLv8Cnn5NRxaBN-3cIjriIQP3pGy7jJtVYxpJVJ6J9M"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "80fae73e-73b5-41c9-8378-868f9a3f36af",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "c623bdb0-dc73-4d24-b828-a6752aa5889c",
+            "name": "update",
+            "url": "/user/updateClient",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-02-23T19:05:04.048Z",
+            "modified": "2024-02-23T23:13:40.410Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjQzMmFlMDFhMTE1YzVlZmEwNmEiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NzI5OTk2LCJleHAiOjE3MDg3NDA3OTZ9.EXx3nFBv34QUxo8vz38IE157p2vLu5XNVVikIOOno_0"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "danosorio3@gmail.com"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "b58dd56b-358f-43fa-85d0-e7019f3d2005",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "c623bdb0-dc73-4d24-b828-a6752aa5889c",
+            "name": "delete",
+            "url": "/user/deleteClient/",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-02-23T19:05:04.049Z",
+            "modified": "2024-02-23T23:14:45.551Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjQzMmFlMDFhMTE1YzVlZmEwNmEiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NzI5OTk2LCJleHAiOjE3MDg3NDA3OTZ9.EXx3nFBv34QUxo8vz38IE157p2vLu5XNVVikIOOno_0"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e5dc68c5-ed09-4629-991a-71fe7cc7f60b",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "fb285838-f534-42f6-87da-8467b894fa75",
+            "name": "addCategory",
+            "url": "/category/addCategory",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-02-23T19:05:04.050Z",
+            "modified": "2024-02-23T21:56:53.056Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDI1ZTQ2ZTQwNjRiZmQ0ZDYyNmEiLCJ1c2VybmFtZSI6ImZwYWl6MiIsIm5hbWUiOiJGcmFuY28iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MjUxOTgsImV4cCI6MTcwODczNTk5OH0.nt8nAv7RjE2vpDKz7MQW3vf85OdzLfZ4E9IVoCySEmo"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Sports"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Sports clothes for athletes."
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "c7bde1e7-5f62-4198-8b98-7f15605dce7a",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "addProduct",
+            "url": "/product/addProduct",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-02-23T19:05:04.051Z",
+            "modified": "2024-02-23T23:16:24.041Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjcwN2U3MzdmNTVlYzBlYWIwMmUiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MzAxMjMsImV4cCI6MTcwODc0MDkyM30.FqjSTs3NzJ1OS9LoWe2EhW0JQwHOoN8yVTTXVUJLruc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Black T-shirt3"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Casual clothes for gym"
+                    },
+                    {
+                        "name": "price",
+                        "value": "100"
+                    },
+                    {
+                        "name": "category",
+                        "value": "65d7663059980f69ccb7d6e7"
+                    },
+                    {
+                        "name": "provider",
+                        "value": "Nike"
+                    },
+                    {
+                        "name": "stock",
+                        "value": "30"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "1116f8cc-a4e1-40ec-ba7c-889f2b498e9b",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "getProductByName",
+            "url": "/product/getProductByName",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2024-02-23T19:05:04.052Z",
+            "modified": "2024-02-23T23:16:06.348Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjcwN2U3MzdmNTVlYzBlYWIwMmUiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MzAxMjMsImV4cCI6MTcwODc0MDkyM30.FqjSTs3NzJ1OS9LoWe2EhW0JQwHOoN8yVTTXVUJLruc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Black T-shirt2"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3f9132f7-7339-4989-951f-f351217fbd5a",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "getProducts",
+            "url": "/product/getProducts",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-02-23T19:05:04.053Z",
+            "modified": "2024-02-23T23:16:14.356Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjcwN2U3MzdmNTVlYzBlYWIwMmUiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MzAxMjMsImV4cCI6MTcwODc0MDkyM30.FqjSTs3NzJ1OS9LoWe2EhW0JQwHOoN8yVTTXVUJLruc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3d70f24c-cc82-47ff-9f65-ecb752a587ea",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "17a80983-d8aa-42af-bf86-cdd47a153ee9",
+            "name": "getProductsByCategory",
+            "url": "/product/getProductsByCategory",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-02-23T19:05:04.056Z",
+            "modified": "2024-02-23T19:05:04.056Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NjU1MjkzLCJleHAiOjE3MDg2NjYwOTN9.4UiFIwy_o0r9gMCNhk7pdU8waT7ususZQsYlUE3Rbqo"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "category",
+                        "value": "65d7663059980f69ccb7d6e7"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "aff6e2f1-c172-4546-8d56-4b8987d3cfbf",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "updateProduct",
+            "url": "/product/updateProduct/65d902cd46e4064bfd4d6270",
+            "method": "PUT",
+            "sortNum": 160000,
+            "created": "2024-02-23T19:05:04.057Z",
+            "modified": "2024-02-23T20:42:27.592Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDI1ZTQ2ZTQwNjRiZmQ0ZDYyNmEiLCJ1c2VybmFtZSI6ImZwYWl6MiIsIm5hbWUiOiJGcmFuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NzIwNzc0LCJleHAiOjE3MDg3MzE1NzR9.kajtFEsstS_Bj8IxUZp4edjSCcUNUax0QtCHryc6zeE"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "T-Shirt for gym and workout."
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3dd56cd9-a516-4589-a660-bcb0c43e064e",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "119ee5d1-ddfb-49d7-8428-dc7a6488de18",
+            "name": "deleteProduct",
+            "url": "/product/deleteProduct/65d902cd46e4064bfd4d6270",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2024-02-23T19:05:04.058Z",
+            "modified": "2024-02-23T20:42:56.774Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDI1ZTQ2ZTQwNjRiZmQ0ZDYyNmEiLCJ1c2VybmFtZSI6ImZwYWl6MiIsIm5hbWUiOiJGcmFuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NzIwNzc0LCJleHAiOjE3MDg3MzE1NzR9.kajtFEsstS_Bj8IxUZp4edjSCcUNUax0QtCHryc6zeE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b8d176bd-7053-45c4-8f7b-3c2a1296f80e",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "a73f8239-db73-4842-8618-e936cba50c09",
+            "name": "changeRole",
+            "url": "/user/changeRole/65d923b5ae01a115c5efa065",
+            "method": "PUT",
+            "sortNum": 180000,
+            "created": "2024-02-23T21:32:08.140Z",
+            "modified": "2024-02-23T23:04:31.355Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjM3OGFlMDFhMTE1YzVlZmEwNjMiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3Mjk0NTIsImV4cCI6MTcwODc0MDI1Mn0.gLv8Cnn5NRxaBN-3cIjriIQP3pGy7jJtVYxpJVJ6J9M"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "role",
+                        "value": "ADMIN"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a1e9c82f-a9e0-441d-a16d-1245781d616b",
+            "colId": "abb94da3-ddb7-442b-885f-16686908cecc",
+            "containerId": "fb285838-f534-42f6-87da-8467b894fa75",
+            "name": "getAllCategories",
+            "url": "/category/getAllCategories",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-02-23T21:52:08.500Z",
+            "modified": "2024-02-23T21:53:45.113Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDI1ZTQ2ZTQwNjRiZmQ0ZDYyNmEiLCJ1c2VybmFtZSI6ImZwYWl6MiIsIm5hbWUiOiJGcmFuY28iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MjUxOTgsImV4cCI6MTcwODczNTk5OH0.nt8nAv7RjE2vpDKz7MQW3vf85OdzLfZ4E9IVoCySEmo"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:2880"
+        }
+    }
+}
