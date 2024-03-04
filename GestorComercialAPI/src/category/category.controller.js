@@ -2,6 +2,7 @@
 
 import { checkUpdate } from '../utils/validator.js'
 import Category from './category.model.js'
+import Product from '../product/product.model.js'
 
 export const test = (req, res) => {
     return res.send('Hello World')
@@ -93,3 +94,37 @@ export const updateCategory = async(req, res)=>{
         return res.status(500).send({message: 'Error updating the information for the category.'})
     }
 }
+
+
+//Delete category
+
+ export const deleteCategory = async(req, res)=>{
+    try {
+        //Id category
+        let {id} = req.params
+        //Searching the category
+        let category = await Category.findById(id)
+        //Checking the category
+        if (!category) return res.status(404).send({ message: 'Category not found' })
+        //Validación para no eliminar la categoría default
+        if(category.clasification == 'DEFAULT') return res.status(401).send({message: 'You cannot delete the default category.'})
+
+        //Changing the category in all the products related to  this one
+        let products = await Product.find()
+        let categoryDefault = await Category.findOne({clasification: 'DEFAULT'})
+        for (let i = 0; i < products.length; i++) {
+            let product = products[i]
+            if (product.category == id){
+                product.category = categoryDefault.id
+                await product.save()
+            }
+        }
+        //Deleting the category
+        await Category.deleteOne({ _id: id })
+        //Replying
+        return res.status(200).send({ message: 'Category deleted successfully.' })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({message: 'Error deleting the category.'})
+    }
+ }
