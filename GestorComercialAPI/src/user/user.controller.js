@@ -75,9 +75,17 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         //Body Information
-        let { username, password } = req.body
+        let {email, username, password } = req.body
         //Checking the user
-        let user = await User.findOne({ username })
+        //Checking that the user has send the username or the email
+        if (!username && !email) return res.status(400).send({ message: 'We need your username or email to login.' })
+
+        let user = await User.findOne({
+            $or: [
+                { username: username },
+                { email: email }
+            ]
+        })
         if (!user) return res.status(404).send({ message: 'User not found' })
 
         //Checking the password

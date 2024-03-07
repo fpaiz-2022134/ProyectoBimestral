@@ -38,7 +38,7 @@ export const addCategory = async (req, res) => {
     try {
         //Capturing the info
         let data = req.body
-        //Add the clasification
+        //Add the classification
         data.clasification = 'CATEGORY'      
         //Creating the category with the information
         let category = new Category(data)

@@ -27,6 +27,10 @@ const productSchema = Schema({
     stock:{
         type: Number,
         required: true
+    },
+    sold: {
+        type: Number,
+        required: true
     }
 })
 

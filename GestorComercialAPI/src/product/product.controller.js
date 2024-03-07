@@ -13,6 +13,8 @@ export const addProduct = async(req, res) =>{
     try {
         //Capturing the information
         let data = req.body
+        //Setting the sold 
+        data.sold = 0
         //Creating the product with the information
         let product = new Product(data)
         //Saving information
@@ -76,7 +78,7 @@ export const updateProduct = async(req, res)=>{
         let { id } = req.params
         //Checking if the data is valid
         let update = checkUpdate(data, id)
-        if (!update) return res.status(400).send({message: 'Have submitted som data that cannot be update or missing.'})
+        if (!update) return res.status(400).send({message: 'Have submitted some data that cannot be update or missing.'})
         //Updating the product
         let updatedProduct = await Product.updateOne(
             {_id: id},

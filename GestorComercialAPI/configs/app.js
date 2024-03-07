@@ -8,7 +8,8 @@ import {config} from 'dotenv'
 
 import userRoutes from '../src/user/user.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
- import productRoutes from '../src/product/product.routes.js' 
+ import productRoutes from '../src/product/product.routes.js'
+ import shoppingRoutes from '../src/shoppingCart/shoppingCart.routes.js' 
 //Configuraciones
 
 const app = express() //Creamos el servidor
@@ -29,6 +30,7 @@ app.use(morgan('dev'))
 app.use('/user',userRoutes)
 app.use('/category', categoryRoutes)
  app.use('/product', productRoutes) 
+ app.use('/shoppingCart', shoppingRoutes )
 //Levantamos el servidor
 
 export const initServer = ()=>{
