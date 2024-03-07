@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GestorComercial",
-    "dateExported": "2024-03-04T15:57:30.288Z",
+    "dateExported": "2024-03-07T16:00:58.415Z",
     "version": "1.1",
     "folders": [
         {
@@ -59,6 +59,27 @@
             "containerId": "e9a44de0-30b1-4c5b-9b8b-ee5ab2b5f0e1",
             "created": "2024-03-04T14:44:45.968Z",
             "sortNum": 90000
+        },
+        {
+            "_id": "973f00e8-b8e7-497f-a260-7c80e9812db5",
+            "name": "shoppingCart",
+            "containerId": "",
+            "created": "2024-03-07T03:24:31.844Z",
+            "sortNum": 100000
+        },
+        {
+            "_id": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "shoppingCart/client",
+            "containerId": "973f00e8-b8e7-497f-a260-7c80e9812db5",
+            "created": "2024-03-07T04:26:41.127Z",
+            "sortNum": 110000
+        },
+        {
+            "_id": "858005a7-31d1-4276-84d4-d3b64f160d8b",
+            "name": "purchase",
+            "containerId": "",
+            "created": "2024-03-07T14:25:09.529Z",
+            "sortNum": 120000
         }
     ],
     "requests": [
@@ -71,7 +92,7 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-03-04T14:44:45.961Z",
-            "modified": "2024-03-04T14:44:45.961Z",
+            "modified": "2024-03-07T14:00:14.182Z",
             "headers": [],
             "params": [],
             "body": {
@@ -80,19 +101,19 @@
                 "form": [
                     {
                         "name": "name",
-                        "value": "Daniela"
+                        "value": "Darlin"
                     },
                     {
                         "name": "surname",
-                        "value": "Osorio"
+                        "value": "Vasquez"
                     },
                     {
                         "name": "username",
-                        "value": "danielaosorio2"
+                        "value": "darlinv"
                     },
                     {
                         "name": "email",
-                        "value": "danosorio@gmail.com"
+                        "value": "darlinv@gmail.com"
                     },
                     {
                         "name": "password",
@@ -104,6 +125,7 @@
                     }
                 ]
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -136,6 +158,18 @@
             "tests": []
         },
         {
+            "_id": "a6f36e66-d0ef-4be8-9c56-00fd2257fa65",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "test",
+            "url": "",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-03-07T03:24:40.175Z",
+            "modified": "2024-03-07T03:24:40.176Z",
+            "headers": []
+        },
+        {
             "_id": "d7808749-e1d9-43e6-8bdb-f2757b46360e",
             "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
             "containerId": "a95f298a-f0b8-4dc8-b9b6-96bef0b2f703",
@@ -144,7 +178,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-03-04T14:44:45.962Z",
-            "modified": "2024-03-04T14:44:45.962Z",
+            "modified": "2024-03-07T14:03:14.816Z",
             "headers": [],
             "params": [],
             "body": {
@@ -158,9 +192,20 @@
                     {
                         "name": "password",
                         "value": "12345678"
+                    },
+                    {
+                        "name": "email",
+                        "value": "darlinv@gmail.com",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678",
+                        "isDisabled": true
                     }
                 ]
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -183,6 +228,49 @@
             "tests": []
         },
         {
+            "_id": "62e26462-a028-4fe9-b2ae-2bd2ed9ebc1b",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "addCart",
+            "url": "/shoppingCart/addCart",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-07T03:41:28.544Z",
+            "modified": "2024-03-07T05:50:22.883Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5NzgyOTc3LCJleHAiOjE3MDk3OTM3Nzd9.TdLkTFsGkopyhwIsjqCGYPyluaTQ3ZeX6f6tnujLYFs"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "products",
+                        "value": "65e9333d6f5056c0c28a5b78"
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "2"
+                    },
+                    {
+                        "name": "products",
+                        "value": "65e9333d6f5056c0c28a5b78",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "2",
+                        "isDisabled": true
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
             "_id": "0ec36ef1-12c7-4b61-8f0f-55eb9d05f1b5",
             "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
             "containerId": "376e23ef-d5bb-4f97-a286-357978431c1b",
@@ -191,7 +279,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-03-04T14:44:45.964Z",
-            "modified": "2024-03-04T14:44:45.964Z",
+            "modified": "2024-03-07T03:15:23.428Z",
             "headers": [],
             "params": [],
             "body": {
@@ -200,14 +288,39 @@
                 "form": [
                     {
                         "name": "username",
-                        "value": "fpaiz"
+                        "value": "fpaiz",
+                        "isDisabled": true
                     },
                     {
                         "name": "password",
                         "value": "87654321"
+                    },
+                    {
+                        "name": "email",
+                        "value": "fpaiz@gmail.com"
                     }
                 ]
             },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "5f12b952-7fc9-4d4a-b23f-68b079f2d1f6",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "getMyCarts",
+            "url": "/shoppingCart/getMyCarts",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-07T04:25:07.680Z",
+            "modified": "2024-03-07T04:27:11.053Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5NzgyOTc3LCJleHAiOjE3MDk3OTM3Nzd9.TdLkTFsGkopyhwIsjqCGYPyluaTQ3ZeX6f6tnujLYFs"
+                }
+            ],
+            "params": [],
             "tests": []
         },
         {
@@ -392,11 +505,11 @@
             "method": "POST",
             "sortNum": 120000,
             "created": "2024-03-04T14:44:45.971Z",
-            "modified": "2024-03-04T14:44:45.971Z",
+            "modified": "2024-03-07T04:39:10.114Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MjcwN2U3MzdmNTVlYzBlYWIwMmUiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MzAxMjMsImV4cCI6MTcwODc0MDkyM30.FqjSTs3NzJ1OS9LoWe2EhW0JQwHOoN8yVTTXVUJLruc"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk3ODE0NTksImV4cCI6MTcwOTc5MjI1OX0.g5CvsoJ9toXBjLgWeJUW7KMSrsih91hj2wMPDJib8lw"
                 }
             ],
             "params": [],
@@ -406,30 +519,31 @@
                 "form": [
                     {
                         "name": "name",
-                        "value": "Black T-shirt3"
+                        "value": "Olympic bar"
                     },
                     {
                         "name": "description",
-                        "value": "Casual clothes for gym"
+                        "value": "Bar to do exercises"
                     },
                     {
                         "name": "price",
-                        "value": "100"
+                        "value": "1200"
                     },
                     {
                         "name": "category",
-                        "value": "65d7663059980f69ccb7d6e7"
+                        "value": "65e5ef3b3dce0ee0bca5f575"
                     },
                     {
                         "name": "provider",
-                        "value": "Nike"
+                        "value": "ThenX"
                     },
                     {
                         "name": "stock",
-                        "value": "30"
+                        "value": "0"
                     }
                 ]
             },
+            "reqType": "post",
             "tests": []
         },
         {
@@ -514,15 +628,15 @@
             "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
             "containerId": "fed83eba-f361-4c62-a36c-4b62b9c2d082",
             "name": "updateProduct",
-            "url": "/product/updateProduct/65d902cd46e4064bfd4d6270",
+            "url": "/product/updateProduct/65d76ce8ed2d418ddb67c911",
             "method": "PUT",
             "sortNum": 160000,
             "created": "2024-03-04T14:44:45.977Z",
-            "modified": "2024-03-04T14:44:45.977Z",
+            "modified": "2024-03-07T03:18:57.722Z",
             "headers": [
                 {
                     "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MDI1ZTQ2ZTQwNjRiZmQ0ZDYyNmEiLCJ1c2VybmFtZSI6ImZwYWl6MiIsIm5hbWUiOiJGcmFuY28iLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA4NzIwNzc0LCJleHAiOjE3MDg3MzE1NzR9.kajtFEsstS_Bj8IxUZp4edjSCcUNUax0QtCHryc6zeE"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk3ODE0NTksImV4cCI6MTcwOTc5MjI1OX0.g5CvsoJ9toXBjLgWeJUW7KMSrsih91hj2wMPDJib8lw"
                 }
             ],
             "params": [],
@@ -532,10 +646,11 @@
                 "form": [
                     {
                         "name": "description",
-                        "value": "T-Shirt for gym and workout."
+                        "value": "Sneakers for gym and workout."
                     }
                 ]
             },
+            "reqType": "put",
             "tests": []
         },
         {
@@ -651,6 +766,100 @@
                 }
             ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b8225451-5d46-4fe4-840f-f5ce49b3c8e2",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "updateCart",
+            "url": "/shoppingCart/updateCart/65e9559e7c826fc4fead816c",
+            "method": "PUT",
+            "sortNum": 220000,
+            "created": "2024-03-07T13:24:54.897Z",
+            "modified": "2024-03-07T13:46:06.142Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODE4MTMxLCJleHAiOjE3MDk4Mjg5MzF9.U_h2qLfyHHdGjQYK4U_UDABMjs9-MWk_3IJP6k10u7U"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "products",
+                        "value": "65e9333d6f5056c0c28a5b78"
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "3"
+                    },
+                    {
+                        "name": "products",
+                        "value": "65e9390eeaa78406dbd31590"
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "1"
+                    }
+                ]
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "398f46d5-db48-4092-8de3-25fb5920c821",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "f3fd1e63-ae4f-412e-8e4e-dc1094167f27",
+            "name": "deleteCart",
+            "url": "/shoppingCart/deleteCart/65e952a5d7a272f84203624f",
+            "method": "DELETE",
+            "sortNum": 230000,
+            "created": "2024-03-07T13:55:50.144Z",
+            "modified": "2024-03-07T14:03:20.042Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODIwMTk0LCJleHAiOjE3MDk4MzA5OTR9.qDt5Y0ux6NSlxtQfAFN6eyoy7JZ2UPTJbUpsLXrh5FA"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9547a64c-885c-473b-b35d-0cf0137b4f30",
+            "colId": "3601a54f-aa46-41eb-bfbc-0557857fc59b",
+            "containerId": "858005a7-31d1-4276-84d4-d3b64f160d8b",
+            "name": "addPurchase",
+            "url": "/purchase/addPurchase",
+            "method": "POST",
+            "sortNum": 240000,
+            "created": "2024-03-07T15:36:33.121Z",
+            "modified": "2024-03-07T15:46:28.260Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODI2MjkwLCJleHAiOjE3MDk4MzcwOTB9.NhYx57aI7sp3Z4t_nC6aZPx_IjPOZWIEuSNRhL89DHc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "shoppingCart",
+                        "value": "65e9559e7c826fc4fead816c"
+                    },
+                    {
+                        "name": "paymentMethod",
+                        "value": "MASTERCARD"
+                    }
+                ]
+            },
             "tests": []
         }
     ],

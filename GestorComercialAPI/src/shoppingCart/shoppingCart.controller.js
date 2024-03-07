@@ -28,7 +28,7 @@ export const addCart = async (req, res) => {
             if (products[i].stock == 0) return res.status(400).send({ message: 'The product is not in stock' })
         }
 
-        
+
 
         //Checking if the product is already in the cart
         for (let i = 0; i < products.length; i++) {
@@ -36,11 +36,11 @@ export const addCart = async (req, res) => {
         }
         //Checking if the array of product is in stock
         for (let i = 0; i < products.length; i++) {
-            console.log( products[i].stock)
+            console.log(products[i].stock)
             console.log(data.quantity[i])
-            if (products[i].stock < data.quantity[i] ) return res.status(400).send({ message: 'Quantity of product not available.' })
+            if (products[i].stock < data.quantity[i]) return res.status(400).send({ message: 'Quantity of product not available.' })
         }
-        
+
 
         //Updating the stock and sold fields
         /* for (let i = 0; i < products.length; i++) {
@@ -76,7 +76,7 @@ export const getMyCarts = async (req, res) => {
         //Getting the id
         let { _id } = req.user
         //Getting the carts
-        let carts = await ShoppingCart.find({customer: _id}).populate('products', ['name', 'price', '-_id']).populate('customer', ['-_id', 'username'])
+        let carts = await ShoppingCart.find({ customer: _id }).populate('products', ['name', 'price', '-_id']).populate('customer', ['-_id', 'username'])
         return res.send(carts)
     } catch (err) {
         console.err(err)
@@ -86,60 +86,86 @@ export const getMyCarts = async (req, res) => {
 
 
 
-export const updateCart = async(req, res) =>{
+export const updateCart = async (req, res) => {
     try {
         //Getting the id of the user
-        let {_id} = req.user
+        let { _id } = req.user
         //Getting the id of the shopping cart
-        let {id} = req.params
+        let { id } = req.params
         //Getting the data 
         let data = req.body
         //Validating the existence of the cart
-        let cart = await ShoppingCart.findOne({_id: id})
-        if (!cart) return res.status(404).send({message: 'Shopping cart is not found.'})
+        let cart = await ShoppingCart.findOne({ _id: id })
+        if (!cart) return res.status(404).send({ message: 'Shopping cart is not found.' })
+
+        //Searching the id of the product to set the stock and sold.
+        let products = await Product.find({ _id: data.products })
+        console.log(products)
+
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].stock == 0) return res.status(400).send({ message: 'The product is not in stock' })
+        }
+
+        //Checking if the array of product is in stock
+        for (let i = 0; i < products.length; i++) {
+            console.log(products[i].stock)
+            console.log(data.quantity[i])
+            if (products[i].stock < data.quantity[i]) return res.status(400).send({ message: 'Quantity of product not available.' })
+        }
+
         //Checking that the user is updating his own cart
-        if (cart.customer != _id) return res.status(401).send({message: 'You cannot update the cart of another people.'})
+        if (cart.customer.toString() != _id.toString()) return res.status(401).send({ message: 'You cannot update the cart of another people.' })
+
+        //Updating the total
+
+            let total = 0
+            for (let i = 0; i < products.length; i++) {
+                total += products[i].price * data.quantity[i]
+
+                data.total = total
+            }
+
         //Checking the update
-        let update  = checkUpdate(data, id)
-        if(!update) return res.status(400).send({message: 'Have submitted some data that cannot be updated or missing'})
+        let update = checkUpdate(data, id)
+        if (!update) return res.status(400).send({ message: 'Have submitted some data that cannot be updated or missing' })
 
         //Updating the cart
-        let updatedCart = await Publication.updateOne(
-            {_id: id},
+        let updatedCart = await ShoppingCart.updateOne(
+            { _id: id },
             data,
-            {new: true}
+            { new: true }
         ).populate('products', ['name', 'price', '-_id']).populate('customer', ['-_id', 'username'])
         //Validating the update action
-        if (!updatedCart) return res.status(404).send({message: 'Shopping cart not found'})
+        if (!updatedCart) return res.status(404).send({ message: 'Shopping cart not found' })
         //Replying
-        return res.status(200).send({message: 'Shopping cart updated successfully'})
-        
+        return res.status(200).send({ message: `Shopping cart added successfully ${updatedCart}`})
+
     } catch (err) {
         console.error(err)
-        return res.status(500).send({message: 'Error updating the shopping cart.'})
-        
+        return res.status(500).send({ message: 'Error updating the shopping cart.' })
+
     }
 }
 
 
 
-export const deleteCart = async (req,res) =>{
+export const deleteCart = async (req, res) => {
     try {
         //Getting the id of the shopping cart
         let { id } = req.params
         //Getting the id of the user
-        let {_id} = req.user
+        let { _id } = req.user
         //Validating the existence of the cart
-        let cart = await ShoppingCart.findOne({_id: id})
-        if (!cart) return res.status(404).send({message: 'Shopping cart not found'})
+        let cart = await ShoppingCart.findOne({ _id: id })
+        if (!cart) return res.status(404).send({ message: 'Shopping cart not found' })
         //Checking that the user is deleting his own cart
-        if (cart.customer!= _id) return res.status(401).send({message: 'You cannot delete the cart of another user.'})
+        if (cart.customer.toString() != _id.toString()) return res.status(401).send({ message: 'You cannot delete the cart of another user.' })
         //Deleting the cart
-        await ShoppingCart.deleteOne({_id: id})
+        await ShoppingCart.deleteOne({ _id: id })
         //Replying
-        return res.status(200).send({message: 'Shopping cart deleted successfully'})
+        return res.status(200).send({ message: 'Shopping cart deleted successfully' })
     } catch (err) {
         console.error(err)
-        return res.status(500).send({message: 'Error deleting the shopping cart.'})
+        return res.status(500).send({ message: 'Error deleting the shopping cart.' })
     }
 }
