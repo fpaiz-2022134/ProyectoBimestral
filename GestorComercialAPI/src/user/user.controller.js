@@ -75,10 +75,18 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         //Body Information
+<<<<<<< HEAD
         let {email, username, password } = req.body
         //Checking the user
         //Checking that the user has send the username or the email
         if (!username && !email) return res.status(400).send({ message: 'We need your username or email to login.' })
+=======
+        let { email, username, password } = req.body
+        //Checking the user
+
+        //Checking that the user has send us the username or email
+        if (!username &&!email) return res.status(400).send({ message: 'We need your username or email to login.' })
+>>>>>>> ed24372f840ceff007d495d21530297e5a6fec7d
 
         let user = await User.findOne({
             $or: [
@@ -265,3 +273,4 @@ export const deleteClient = async(req,res)=>{
         return res.status(500).send({message: 'Error deleting account'})
     }
 }
+
