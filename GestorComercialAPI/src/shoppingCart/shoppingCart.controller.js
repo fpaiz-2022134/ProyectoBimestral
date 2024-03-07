@@ -77,6 +77,7 @@ export const getMyCarts = async (req, res) => {
         let { _id } = req.user
         //Getting the carts
         let carts = await ShoppingCart.find({ customer: _id }).populate('products', ['name', 'price', '-_id']).populate('customer', ['-_id', 'username'])
+
         return res.send(carts)
     } catch (err) {
         console.err(err)

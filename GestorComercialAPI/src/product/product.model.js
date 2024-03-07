@@ -20,10 +20,6 @@ const productSchema = Schema({
         ref: 'category',
         required: true
     },
-    provider: {
-        type: String,
-        required: true
-    },
     stock:{
         type: Number,
         required: true

@@ -2,7 +2,11 @@
 
 import {model, Schema} from 'mongoose'
 
-const purchaseSchema = Schema ({
+const invoiceSchema = Schema ({
+    NIT: {
+        type: String,
+        required: true 
+    },
     customer: {
         type: Schema.Types.ObjectId,
         ref: 'user',
@@ -12,6 +16,19 @@ const purchaseSchema = Schema ({
         type: Schema.Types.ObjectId,
         ref:'shoppingCart',
         required: true
+    },
+    products: {
+        type:[{
+            type: Schema.Types.ObjectId,
+            ref: 'product',
+            required:true
+        }]
+    },
+    quantity: {
+        type: [{
+            type: Number,
+            required: true
+        }]
     },
     date: {
         type: Date,
@@ -29,4 +46,4 @@ const purchaseSchema = Schema ({
     }
 })
 
-export default model('purchase', purchaseSchema)
+export default model('invoice', invoiceSchema)

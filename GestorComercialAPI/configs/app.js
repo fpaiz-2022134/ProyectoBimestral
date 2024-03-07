@@ -10,7 +10,7 @@ import userRoutes from '../src/user/user.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
 import productRoutes from '../src/product/product.routes.js'
 import shoppingRoutes from '../src/shoppingCart/shoppingCart.routes.js'
-import purchaseRoutes from '../src/purchase/purchase.routes.js'
+import invoiceRoutes from '../src/invoice/invoice.routes.js'
 //Configuraciones
 
 const app = express() //Creamos el servidor
@@ -32,7 +32,7 @@ app.use('/user', userRoutes)
 app.use('/category', categoryRoutes)
 app.use('/product', productRoutes)
 app.use('/shoppingCart', shoppingRoutes)
-app.use('/purchase', purchaseRoutes)
+app.use('/invoice', invoiceRoutes)
 //Levantamos el servidor
 
 export const initServer = () => {
