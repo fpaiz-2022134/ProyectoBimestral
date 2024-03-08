@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GestorComercial",
-    "dateExported": "2024-03-08T07:31:47.295Z",
+    "dateExported": "2024-03-08T16:09:27.748Z",
     "version": "1.1",
     "folders": [
         {
@@ -80,6 +80,20 @@
             "containerId": "",
             "created": "2024-03-08T02:12:59.008Z",
             "sortNum": 120000
+        },
+        {
+            "_id": "c74ed16c-307a-4a46-9a5b-58cd139e492b",
+            "name": "admin",
+            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
+            "created": "2024-03-08T16:01:08.324Z",
+            "sortNum": 130000
+        },
+        {
+            "_id": "8267ca9f-3ad0-49be-99a3-7a8a96a3fc87",
+            "name": "client",
+            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
+            "created": "2024-03-08T16:01:17.221Z",
+            "sortNum": 140000
         }
     ],
     "requests": [
@@ -167,6 +181,90 @@
             "created": "2024-03-08T02:12:59.020Z",
             "modified": "2024-03-08T02:12:59.020Z",
             "headers": []
+        },
+        {
+            "_id": "84c2bb21-076a-4af4-ba71-4175bab620e3",
+            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
+            "containerId": "8267ca9f-3ad0-49be-99a3-7a8a96a3fc87",
+            "name": "addInvoice",
+            "url": "/invoice/addInvoice",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T02:12:59.025Z",
+            "modified": "2024-03-08T02:36:40.020Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODY1MDQzLCJleHAiOjE3MDk4NzU4NDN9.njiPeITOfyoXlPIDjpRtr94AgoaKt4hgcKuOT-y2MiM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "shoppingCart",
+                        "value": "65ea794bd5d9154ca97384b7"
+                    },
+                    {
+                        "name": "paymentMethod",
+                        "value": "MASTERCARD"
+                    },
+                    {
+                        "name": "NIT",
+                        "value": "CF"
+                    }
+                ]
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "9c1aa97d-a14d-4298-815d-f84e0857b37f",
+            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
+            "containerId": "c74ed16c-307a-4a46-9a5b-58cd139e492b",
+            "name": "updateInvoice",
+            "url": "/invoice/updateInvoice/65ea79b7d5d9154ca97384bd",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2024-03-08T02:12:59.027Z",
+            "modified": "2024-03-08T06:39:03.594Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk4Nzk5MzQsImV4cCI6MTcwOTg5MDczNH0.e_8_TuaEOio1eqGvEI94GRCoaFi7BWKaLugk6roz7Gc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "paymentMethod",
+                        "value": "VISA"
+                    },
+                    {
+                        "name": "products",
+                        "value": "65e9390eeaa78406dbd31590"
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "3"
+                    },
+                    {
+                        "name": "products",
+                        "value": "65e9333d6f5056c0c28a5b78"
+                    },
+                    {
+                        "name": "quantity",
+                        "value": "4"
+                    }
+                ]
+            },
+            "reqType": "put",
+            "tests": []
         },
         {
             "_id": "8ccd3063-eb82-484a-bbda-de746cd4d062",
@@ -267,6 +365,56 @@
                 ]
             },
             "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "0876b346-3f68-4a92-99f8-9498ef89f82f",
+            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
+            "containerId": "8267ca9f-3ad0-49be-99a3-7a8a96a3fc87",
+            "name": "getMyInvoice",
+            "url": "/invoice/getMyInvoices",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-08T02:12:59.026Z",
+            "modified": "2024-03-08T06:35:57.748Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODcxODEyLCJleHAiOjE3MDk4ODI2MTJ9.KqvPla5tO4LwJ2bOW6dHGEIVp8qNrWvZe2Nogu0KShM"
+                }
+            ],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "192a6a87-49b0-4323-9472-0c4ad924f38d",
+            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
+            "containerId": "c74ed16c-307a-4a46-9a5b-58cd139e492b",
+            "name": "disableInvoice",
+            "url": "/invoice/disableInvoice/65ea79b7d5d9154ca97384bd",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-08T03:09:44.879Z",
+            "modified": "2024-03-08T03:14:56.366Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk4Njc2NjQsImV4cCI6MTcwOTg3ODQ2NH0.TWfwg0NOURqH1M1vYJLbCpccEqNoxanMGNE3yIarzf8"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "status",
+                        "value": "false",
+                        "isDisabled": true
+                    }
+                ]
+            },
             "tests": []
         },
         {
@@ -828,140 +976,6 @@
                 }
             ],
             "params": [],
-            "tests": []
-        },
-        {
-            "_id": "84c2bb21-076a-4af4-ba71-4175bab620e3",
-            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
-            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
-            "name": "addInvoice",
-            "url": "/invoice/addInvoice",
-            "method": "POST",
-            "sortNum": 240000,
-            "created": "2024-03-08T02:12:59.025Z",
-            "modified": "2024-03-08T02:36:40.020Z",
-            "headers": [
-                {
-                    "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODY1MDQzLCJleHAiOjE3MDk4NzU4NDN9.njiPeITOfyoXlPIDjpRtr94AgoaKt4hgcKuOT-y2MiM"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "formencoded",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "shoppingCart",
-                        "value": "65ea794bd5d9154ca97384b7"
-                    },
-                    {
-                        "name": "paymentMethod",
-                        "value": "MASTERCARD"
-                    },
-                    {
-                        "name": "NIT",
-                        "value": "CF"
-                    }
-                ]
-            },
-            "reqType": "post",
-            "tests": []
-        },
-        {
-            "_id": "0876b346-3f68-4a92-99f8-9498ef89f82f",
-            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
-            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
-            "name": "getMyInvoice",
-            "url": "/invoice/getMyInvoices",
-            "method": "GET",
-            "sortNum": 250000,
-            "created": "2024-03-08T02:12:59.026Z",
-            "modified": "2024-03-08T06:35:57.748Z",
-            "headers": [
-                {
-                    "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4MDI5ZGJiMjZmMDY2YmRlMjU3YzgiLCJ1c2VybmFtZSI6ImRhbmllbGFvc29yaW8yIiwibmFtZSI6IkRhbmllbGEiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzA5ODcxODEyLCJleHAiOjE3MDk4ODI2MTJ9.KqvPla5tO4LwJ2bOW6dHGEIVp8qNrWvZe2Nogu0KShM"
-                }
-            ],
-            "params": [],
-            "reqType": "get",
-            "tests": []
-        },
-        {
-            "_id": "9c1aa97d-a14d-4298-815d-f84e0857b37f",
-            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
-            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
-            "name": "updateInvoice",
-            "url": "/invoice/updateInvoice/65ea79b7d5d9154ca97384bd",
-            "method": "PUT",
-            "sortNum": 260000,
-            "created": "2024-03-08T02:12:59.027Z",
-            "modified": "2024-03-08T06:39:03.594Z",
-            "headers": [
-                {
-                    "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk4Nzk5MzQsImV4cCI6MTcwOTg5MDczNH0.e_8_TuaEOio1eqGvEI94GRCoaFi7BWKaLugk6roz7Gc"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "formencoded",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "paymentMethod",
-                        "value": "VISA"
-                    },
-                    {
-                        "name": "products",
-                        "value": "65e9390eeaa78406dbd31590"
-                    },
-                    {
-                        "name": "quantity",
-                        "value": "3"
-                    },
-                    {
-                        "name": "products",
-                        "value": "65e9333d6f5056c0c28a5b78"
-                    },
-                    {
-                        "name": "quantity",
-                        "value": "4"
-                    }
-                ]
-            },
-            "reqType": "put",
-            "tests": []
-        },
-        {
-            "_id": "192a6a87-49b0-4323-9472-0c4ad924f38d",
-            "colId": "cbcb52f1-8d45-4a40-a10b-078d7b4cafb5",
-            "containerId": "b0728bbe-7da1-405d-809d-41c160e7d4d0",
-            "name": "disableInvoice",
-            "url": "/invoice/disableInvoice/65ea79b7d5d9154ca97384bd",
-            "method": "PUT",
-            "sortNum": 270000,
-            "created": "2024-03-08T03:09:44.879Z",
-            "modified": "2024-03-08T03:14:56.366Z",
-            "headers": [
-                {
-                    "name": "token",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMGY2MDdhN2I0NjU1M2Y2Yzc3MGQiLCJ1c2VybmFtZSI6ImZwYWl6IiwibmFtZSI6IkZyYW5jbyAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDk4Njc2NjQsImV4cCI6MTcwOTg3ODQ2NH0.TWfwg0NOURqH1M1vYJLbCpccEqNoxanMGNE3yIarzf8"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "formencoded",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "status",
-                        "value": "false",
-                        "isDisabled": true
-                    }
-                ]
-            },
             "tests": []
         },
         {
