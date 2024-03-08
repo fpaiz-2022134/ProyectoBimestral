@@ -126,6 +126,29 @@ export const topProducts = async(req, res) =>{
 }
 
 
+export const searchProduct = async(req, res) =>{
+    try {
+        //Getting the name to search the product
+        const { search } = req.body
+        console.log(search)
+        console.log(typeof search)
+        //Validating that the search si not empty and the typeOf is string
+        if(!search || typeof search !== 'string' ){
+            return res.status(400).send({message: 'Your search term is invalid.'})
+        }
+        //Searching with the regex and the i is ignoring the difference between uppercase and lowercase
+        const regex = new RegExp(search.trim(), 'i');
+        //Finding
+        let products = await Product.find({name: regex}).populate('category', ['name', '-_id'])
 
+        if(products.length === 0){
+            return res.status(404).send({message: 'Product not found'})
+
+        }
+        return res.send({message: 'Products found: ', products})
+    } catch (err) {
+        console.error(err)
+    }
+}
 
 

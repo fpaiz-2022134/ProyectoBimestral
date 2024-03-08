@@ -170,3 +170,29 @@ export const deleteCart = async (req, res) => {
         return res.status(500).send({ message: 'Error deleting the shopping cart.' })
     }
 }
+
+export const deleteProductInCart = async (req,res) => {
+    try {
+        //Getting id of the shopping cart
+        let { id } = req.params
+        //Getting the id of the user
+        let {_id} = req.user
+        //Getting the product
+        let {product} = req.body
+        //Validating the existence of the cart
+        let cart = await ShoppingCart.findOne({ _id: id })
+        if (!cart) return res.status(404).send({ message: 'Shopping cart not found' })
+        //Checking that the user is deleting a product of his own cart
+        if (cart.customer.toString()!= _id.toString()) return res.status(401).send({ message: 'You cannot delete the product of another user.' })
+        //Deleting the product of the cart
+        
+       /*  await ShoppingCart.updateOne({ _id: id }, { $pull: { products: product } })
+        //Validating the update action */
+        await ShoppingCart.updateOne({ _id: id}, { $pull: {products: product}})
+        //Replying
+        return res.status(200).send({ message: 'Shopping cart product deleted successfully' })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({message: 'Error deleting the products in the shopping cart.'})
+    }
+}

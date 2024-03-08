@@ -14,8 +14,8 @@ import {
     getMyInvoices,
     updateInvoice,
     disableInvoice,
-    invoicePDF,
-    createPDF
+    createPDF,
+    getUserInvoices
 }from './invoice.controller.js'
 
 const api = express.Router()
@@ -28,6 +28,7 @@ api.post('/addInvoice', [validateJwt, isClient], addInvoice)
 api.get('/getMyInvoices', [validateJwt, isClient], getMyInvoices)
 api.put('/updateInvoice/:id', [validateJwt, isAdmin], updateInvoice)
 api.put('/disableInvoice/:id',[validateJwt, isAdmin], disableInvoice)
-/* api.post('/invoicePDF/:id',[validateJwt, isClient],  invoicePDF) */
+api.get('/getUserInvoices', [validateJwt, isAdmin], getUserInvoices)
+
 api.get('/createPDF/:id', createPDF)
 export default api

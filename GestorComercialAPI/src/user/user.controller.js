@@ -136,13 +136,13 @@ export const changeRole = async(req, res)=>{
         let update = checkUpdate(data.role, id)
         if (!update) return res.status(400).send({ message: 'Have submitted some data that cannot be update or missing' })
 
-        let udpatedUser = await User.updateOne(
+        let updatedUser = await User.updateOne(
             { _id: id },
             data,
             { new: true }
         )
         //Validation of the change role
-        if (!udpatedUser) return res.status(404).send({ message: 'User not found' })
+        if (!updatedUser) return res.status(404).send({ message: 'User not found' })
         
         return res.status(200).send({message: 'The role has been changed successfully.'})
     } catch (err) {
@@ -152,36 +152,36 @@ export const changeRole = async(req, res)=>{
 
 }
 
-
+//----------------------------------------------------------------
 //UPDATE for admin
 
 export const updateUser = async (req, res) => {
     try {
-        //Getting the secret key
-        let secretKey = process.env.SECRET_KEY
-
-        let { token } = req.headers
-
-        //Getting the id with the token
-        let { uid } = jwt.verify(token, secretKey)
+        //Getting the id by the token
+        let {_id } = req.user
         //Id from the user to update.   
         let { id } = req.params
         //Capturing the data
         let data = req.body
 
-        //Checkind the information is valid
+        //Validating that the user can only update his own profile or another clients
+        let user = await User.findOne({_id: id})
+
+        if((user.role == 'ADMIN') && (_id != id)) return res.status(403).send({message: 'You cannot update another admin, you can only update yourself or clients.'})
+
+        //Checking the information is valid
         let update = checkUpdate(data, id)
         if (!update) return res.status(400).send({ message: 'Have submitted some data that cannot be update or missing' })
 
         //Updating the user
-        let udpatedUser = await User.updateOne(
+        let updatedUser = await User.updateOne(
             { _id: id },
             data,
             { new: true }
         )
 
         //Validation of the updated action
-        if (!udpatedUser) return res.status(404).send({ message: 'User not found' })
+        if (!updatedUser) return res.status(404).send({ message: 'User not found' })
 
         return res.status(200).send({message: 'User updated successfully.'})
         
@@ -198,7 +198,14 @@ export const deleteUser = async(req, res)=>{
     try {
     
         //Getting the id
-        let {id } = req.body
+        let {id } = req.params
+        let {_id} = req.user
+        //Validating that the user can only update his own profile or another clients
+        let user = await User.findOne({_id: id})
+        //You CANNOT DELETE the default admin *
+        if(user.username == 'fpaiz') return res.status(403).send({message: 'You cannot delete the default admin'})
+
+        if((user.role == 'ADMIN') && (_id != id)) return res.status(403).send({message: 'You cannot update another admin, you can only update yourself or clients.'})
 
         // Deleting the user 
         let deletedUser = await User.findOneAndDelete(id)
@@ -206,12 +213,15 @@ export const deleteUser = async(req, res)=>{
         //Validation of the deleted action
         if (!deletedUser) return res.status(404).send({ message: 'User not found' })
         //Answer
-        return res.send({message: `Account with username ${deletedUser} deleted successfully`})
+        return res.send({message: `Account with username ${deletedUser.name} deleted successfully`})
     } catch (err) {
         console.error(err)
         return res.status(500).send({message: 'Error deleting account'})
     }
 }
+
+//----------------------------------------------------------------
+
 
 //Update for client
 // The clients are only going to update their account
@@ -220,21 +230,21 @@ export const deleteUser = async(req, res)=>{
 export const updateClient = async(req,res) =>{
     try {
 
-        //Getting the secret key
-        let secretKey = process.env.SECRET_KEY
+        //Getting the id of the client
+        let {_id} = req.user
+        //Getting the id by params
+        let {id} = req.params
 
-        let { token } = req.headers
+        //Getting the data
         let data = req.body
-
-        //Getting the id with the token
-        let { uid } = jwt.verify(token, secretKey)
-
+        //Validating that the client is the same that is updating
+        if(_id != id) return res.status(401).send({message: 'You only can update your account.'})        
         //Validating the data
-        let update = checkUpdate(data, uid)
+        let update = checkUpdate(data, id)
         if(!update) return res.status(400).send({message: 'Have submitted some data that cannot be updated or missing'})
         //Updating
         let updatedU = await User.findOneAndUpdate(
-            {_id: uid},
+            {_id: id},
             data,
             { new: true }
         )
@@ -255,21 +265,28 @@ export const updateClient = async(req,res) =>{
 
 export const deleteClient = async(req,res)=>{
     try {
-        //Getting the secret key
-        let secretKey = process.env.SECRET_KEY
+        //Getting the id of the token
+        let {_id} = req.user
+        //Getting the id by params
+        let { id} = req.params
+        //Getting the password
+        let {password} = req.body
+        //Validating that the client cannot delete an admin
+        let user = await User.findOne({_id:id})
+        if(user.role == 'ADMIN') return res.status(401).send({message: 'You cannot delete an admin.'})
+        //Validating that the client is the same that is updating
+        if(_id != id) return res.status(401).send({message: 'You only can update your account.'}) 
 
-        let { token } = req.headers
-
-        //Getting the id with the token
-        let { uid } = jwt.verify(token, secretKey)
-
+        //Confirm the delete with a checkPassword
+        let check = await checkPassword(password, user.password)
+        if(!check) return res.status(401).send({message: 'Invalid password'})
         //Deleting the user 
-        let deletedU = await User.findOneAndDelete(uid)
+        let deletedU = await User.findOneAndDelete(id)
 
         //Validation of the deleted action
         if (!deletedU) return res.status(404).send({ message: 'User not found' })
         //Answer
-        return res.send({message: `Account with username ${deletedU} deleted successfully`})
+        return res.send({message: `Account with username ${deletedU.name} deleted successfully`})
     } catch (err) {
         console.error(err)
         return res.status(500).send({message: 'Error deleting account'})

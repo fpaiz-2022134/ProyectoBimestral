@@ -22,10 +22,13 @@ const api = express.Router()
 
 api.get('/test', test)
 
+//ADMIN AND CLIENT
+api.get('/getAllCategories', [validateJwt], getAllCategories)
+
 //ADMIN
 api.post('/addCategory', [validateJwt, isAdmin], addCategory)
-api.get('/getAllCategories', [validateJwt, isAdmin], getAllCategories)
 api.put('/updateCategory/:id', [validateJwt, isAdmin], updateCategory)
 api.delete('/deleteCategory/:id', [validateJwt, isAdmin], deleteCategory)
+
 
 export default api

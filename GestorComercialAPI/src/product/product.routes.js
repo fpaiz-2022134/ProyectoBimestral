@@ -19,7 +19,8 @@ import {
     updateProduct,
     deleteProduct,
     outOfStock,
-    topProducts
+    topProducts,
+    searchProduct
 } from './product.controller.js'
 
 const api = express.Router()
@@ -27,12 +28,14 @@ const api = express.Router()
 api.get('/test', test)
 api.get('/getProductByName', [validateJwt], getProductByName)
 api.get('/getProducts', [validateJwt], getProducts)
+api.get('/outOfStock', [validateJwt], outOfStock)
+api.get('/topProducts',[validateJwt],topProducts )
+api.get('/searchProduct', [validateJwt], searchProduct)
 //ADMIN
 api.post('/addProduct', [validateJwt, isAdmin], addProduct)
 api.put('/updateProduct/:id', [validateJwt, isAdmin], updateProduct)
 api.delete('/deleteProduct/:id', [validateJwt, isAdmin], deleteProduct )
-api.get('/outOfStock', [validateJwt, isAdmin], outOfStock)
-api.get('/topProducts',[validateJwt, isAdmin],topProducts )
+
 //CLIENT
 api.get('/getProductsByCategory', [validateJwt, isClient], getProductsByCategory)
 export default api

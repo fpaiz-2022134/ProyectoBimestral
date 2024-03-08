@@ -12,7 +12,8 @@ import {
     addCart,
     getMyCarts,
     updateCart,
-    deleteCart
+    deleteCart,
+    deleteProductInCart
 } from './shoppingCart.controller.js'
 
 const api = express.Router()
@@ -24,5 +25,6 @@ api.post('/addCart', [validateJwt, isClient], addCart)
 api.get('/getMyCarts',[validateJwt, isClient], getMyCarts )
 api.put('/updateCart/:id', [validateJwt, isClient], updateCart)
 api.delete('/deleteCart/:id', [validateJwt, isClient], deleteCart)
+api.delete('/deleteProductInCart/:id', [validateJwt, isClient], deleteProductInCart)
 
 export default api

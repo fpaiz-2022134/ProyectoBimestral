@@ -24,7 +24,7 @@ api.put('/updateUser/:id', [validateJwt, isAdmin],updateUser)
 api.delete('/deleteUser/:id', [validateJwt, isAdmin], deleteUser )
 api.put('/changeRole/:id', [validateJwt, isAdmin], changeRole)
 //CLIENT
-api.put('/updateClient', [validateJwt,isClient], updateClient)
-api.delete('/deleteClient', [validateJwt, isClient], deleteClient)
+api.put('/updateClient/:id', [validateJwt,isClient], updateClient)
+api.delete('/deleteClient/:id', [validateJwt, isClient], deleteClient)
 
 export default api

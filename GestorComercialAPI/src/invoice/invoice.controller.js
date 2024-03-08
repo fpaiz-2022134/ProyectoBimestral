@@ -84,6 +84,21 @@ export const getMyInvoices = async (req, res) => {
 }
 
 
+export const getUserInvoices = async(req, res) =>{
+    try {
+       let {customer} = req.body
+       //Getting the Invoices that are available
+       let invoices = await Invoice.find({ customer: customer }).populate('customer', ['-_id', 'username'])
+      .populate('shoppingCart', ['-_id', '-customer', '-products', '-quantity', '-total']).populate('products', ['-_id', 'name', 'price'])
+
+      return res.send(invoices)
+
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: 'Error getting the invoices of the user.'})
+    }
+}
+
 //Updating the invoice
 export const updateInvoice = async (req, res) => {
     try {
@@ -170,77 +185,6 @@ export const disableInvoice = async (req, res) => {
 }
 
 
-/* export const invoicePDF = async (req, res) => {
-    try {
-
-        //Getting the id
-        let {id} = req.params
-
-        // Load the PDF template
-        const existingPdfBytes = fs.readFileSync('./src/pdfInvoice/invoice-template.pdf');
-
-        // Create a new PDFDocument
-        const pdfDoc = await PDFDocument.load(existingPdfBytes);
-
-        // Get the first page of the document
-        const pages = pdfDoc.getPages();
-        const firstPage = pages[0];
-
-        const invoice = await Invoice.findOne({_id: id})
-        let shoppingCart = await ShoppingCart.findOne({_id: invoice.shoppingCart})
-        // Fill out the form fields on the first page
-        firstPage.getForm().getTextField('nit').setText(invoice.NIT);
-        firstPage.getForm().getTextField('customer').setText(invoice.customer.name);
-        firstPage.getForm().getTextField('shoppingCart').setText(shoppingCart._id);
-        firstPage.getForm().getTable('items').addRow([
-            invoiceObject.products[0].name,
-            invoiceObject.quantity[0],
-            invoiceObject.products[0].price.toFixed(2)
-        ]);
-        firstPage.getForm().getTextField('paymentMethod').setText(invoice.methodPayment);
-        firstPage.getForm().getTextField('date').setText(invoice.date || new Date().toISOString().slice(0, 10) );
-        firstPage.getForm().getTextField('total').setText(invoice.total.toFixed(2));
-
-        // Save the new PDF
-        const pdfBytes = await pdfDoc.save();
-
-        // Specify the path to the "facturas" directory
-        const facturasDirectory = './src/pdfInvoice/';
-
-        // Ensure the "facturas" directory exists
-        if (!fs.existsSync(facturasDirectory)) {
-            fs.mkdirSync(facturasDirectory);
-        }
-
-        // Generate a unique filename for the invoice
-        const fileName = `${Date.now()}-${invoice._id}.pdf`;
-
-        // Write the PDF bytes to the "facturas" directory
-        fs.writeFileSync(`${facturasDirectory}/${fileName}`, pdfBytes);
-
-        // Return a response indicating success
-        res.status(200).send({ message: 'Compra exitosa. La factura ha sido guardada en la carpeta "facturas".' });
-
-
-    } catch (err) {
-        console.error(err)
-        return res.status(500).send({ message: 'Error creating the PDF.' })
-    }
-}
- */
-
-
-export const invoicePDF = async (req, res) => {
-    try {
-        let data = req.body
-        const doc = new PDFDocument()
-        doc.on('data')
-        doc.on('end')
-    } catch (err) {
-        console.error(err)
-        return res.status(500).send({ message: 'Error creating the PDF.' })
-    }
-}
 
 // table 
 import path from 'path'
