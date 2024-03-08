@@ -1,6 +1,7 @@
 'use strict'
 
 import User from '../user/user.model.js'
+import Invoice from '../invoice/invoice.model.js'
 import jwt from 'jsonwebtoken'
 import {
     encrypt,
@@ -102,12 +103,18 @@ export const login = async (req, res) => {
             //Generate the token
             let token = await generateJwt(loggedUser)
 
+            //Searching all the purchases and invoices of the user
+            let invoices = await Invoice.find({ customer: user._id }).populate('customer', ['-_id', 'username'])
+             .populate('shoppingCart', ['-_id', '-customer', '-products', '-quantity', '-total']).populate('products', ['-_id', 'name', 'price'])
+
+             if(!invoices) return res.status(404).send({message: 'Invoices not found, you are an admin.'})
             //Respond (dar acceso)
             return res.send(
                 {
                     message: `Welcome ${user.name}`,
                     loggedUser,
-                    token
+                    token,
+                    invoices
                 }
             ) 
         }

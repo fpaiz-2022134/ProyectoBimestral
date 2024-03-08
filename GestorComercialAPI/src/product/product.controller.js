@@ -105,7 +105,25 @@ export const deleteProduct = async(req, res) =>{
     return res.status(200).send({message: 'The product has been deleted successfully'})
 }
 
+export const outOfStock = async(req, res) =>{
+    try {
+        let productsZero = await Product.find({stock: 0})
+        return res.send(productsZero)
+    } catch (err) {
+        console.error(err)
+        
+    }
+}
 
+export const topProducts = async(req, res) =>{
+    try {
+        let products = await Product.find().sort({sold: -1})
+        return res.send(products)
+    } catch (err) {
+        console.error(err)
+        
+    }
+}
 
 
 
